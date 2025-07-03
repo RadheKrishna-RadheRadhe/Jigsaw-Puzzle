@@ -468,9 +468,32 @@ function dragEnd() {
     }
 
     // Check if the game is complete after every move
+    // Check if the game is complete after every move
     if (checkCompletion() && !isGameComplete) {
-        isGameComplete = true; // Prevent multiple triggers
-        showCompletionScreen(selectedFolder); // Show original image and explanation
+        stopTimer();
+        isGameComplete = true;
+        showCompletionScreen(selectedFolder);
+
+        // Show redirect countdown
+        const countdownMsg = document.createElement("div");
+        countdownMsg.innerHTML = `
+        <p style="color:white; font-family:Comfortaa; margin-top:40px; font-size:18px;" id="redirect-msg">
+            Redirecting to credits page in <span id="countdown">10</span> seconds...
+        </p>`;
+        document.getElementById("board").appendChild(countdownMsg);
+
+        // Countdown logic
+        let countdown = 25;
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            document.getElementById("countdown").innerText = countdown;
+            if (countdown === 0) clearInterval(countdownInterval);
+        }, 1000);
+
+        // Redirect to credits.html after 10 seconds
+        setTimeout(() => {
+            window.location.href = "../../../Credits.html";
+        }, 25000);
     }
 }
 
