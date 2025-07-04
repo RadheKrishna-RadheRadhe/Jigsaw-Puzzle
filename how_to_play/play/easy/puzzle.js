@@ -447,8 +447,8 @@ function dragEnd() {
         correctPositions[index] = true;
 
         // Lock the current tile to prevent further moves
-        currTile.dataset.locked = "true"; // Lock the tile
-        otherTile.dataset.locked = "true"; // Lock the other tile
+        currTile.dataset.locked = "true";
+        otherTile.dataset.locked = "true";
 
         // Play the placement sound
         placementSound.play();
@@ -456,16 +456,25 @@ function dragEnd() {
         turns += 1;
         document.getElementById("turns").innerText = turns;
 
-        // Show a random question and disable the board
-        let pieceIndex = getRandomQuestionIndex(); // Get a random question index
-        showQuestion(pieceIndex);
+        // ✅ Disable all tiles
+        const tiles = document.querySelectorAll("#board img, #pieces img");
+        tiles.forEach(tile => tile.style.pointerEvents = "none");
+
+        // ✅ Show a random question after 1.5 sec delay
+        let pieceIndex = getRandomQuestionIndex();
+        setTimeout(() => {
+            showQuestion(pieceIndex);
+
+            // ✅ Re-enable all tiles
+            tiles.forEach(tile => tile.style.pointerEvents = "auto");
+        }, 1500);
     } else {
         // Move back to the pieces pile if incorrect
         turns += 1;
         document.getElementById("turns").innerText = turns;
 
         // Reset the currTile image using the selectedFolder
-        currTile.src = `./${selectedFolder}/${currTile.dataset.pieceNumber}.jpg`; // Ensure the original folder is used
+        currTile.src = `./${selectedFolder}/${currTile.dataset.pieceNumber}.jpg`;
     }
 
     // Check if the game is complete after every move
@@ -474,28 +483,39 @@ function dragEnd() {
         isGameComplete = true;
         showCompletionScreen(selectedFolder);
 
-        // Show redirect countdown
-        const countdownMsg = document.createElement("div");
-        countdownMsg.innerHTML = `
-        <p style="color:white; font-family:Comfortaa; margin-top:40px; font-size:18px;" id="redirect-msg">
-            Redirecting to credits page in <span id="countdown">10</span> seconds...
-        </p>`;
-        document.getElementById("board").appendChild(countdownMsg);
+        const creditsButton = document.createElement("button");
+        creditsButton.innerText = "Go to Credits";
 
-        // Countdown logic
-        let countdown = 25;
-        const countdownInterval = setInterval(() => {
-            countdown--;
-            document.getElementById("countdown").innerText = countdown;
-            if (countdown === 0) clearInterval(countdownInterval);
-        }, 1000);
+        // Button Styling
+        creditsButton.style.display = "block";
+        creditsButton.style.margin = "60px auto 40px auto";
+        creditsButton.style.padding = "12px 24px";
+        creditsButton.style.fontSize = "18px";
+        creditsButton.style.fontFamily = "Comfortaa";
+        creditsButton.style.backgroundColor = "#FFD700";
+        creditsButton.style.border = "none";
+        creditsButton.style.borderRadius = "12px";
+        creditsButton.style.cursor = "pointer";
+        creditsButton.style.transition = "all 0.3s ease";
 
-        // Redirect to credits.html after 10 seconds
-        setTimeout(() => {
+        // Hover Effects
+        creditsButton.onmouseover = function () {
+            creditsButton.style.backgroundColor = "#FFC107";
+            creditsButton.style.transform = "scale(1.05)";
+        };
+        creditsButton.onmouseout = function () {
+            creditsButton.style.backgroundColor = "#FFD700";
+            creditsButton.style.transform = "scale(1)";
+        };
+
+        creditsButton.onclick = () => {
             window.location.href = "../../../Credits.html";
-        }, 25000);
+        };
+
+        document.getElementById("board").appendChild(creditsButton);
     }
 }
+
 
 function isCorrectPosition(tile, draggedTile) {
     let tilePosition = Array.prototype.indexOf.call(tile.parentNode.children, tile);
@@ -515,73 +535,104 @@ function isCorrectPosition(tile, draggedTile) {
 
 function showQuestion(index) {
     let question = questions[index];
+    let attemptsLeft = 3;
+    let answeredCorrectly = false;
 
-    // Fade in the overlay and show the question section
-    let overlay = document.getElementById("overlay");
-    let questionSection = document.getElementById("question-section");
+    const overlay = document.getElementById("overlay");
+    const questionSection = document.getElementById("question-section");
+    const closeBtn = document.getElementById("close-btn");
+    const explanationBox = document.getElementById("explanation");
+    const optionsDiv = document.getElementById("options");
 
-    overlay.style.display = "block"; // Make it visible
-    questionSection.style.display = "block"; // Make question box visible
+    overlay.style.display = "block";
+    questionSection.style.display = "block";
+    closeBtn.style.display = "none";
+    explanationBox.style.display = "none";
 
-    // Trigger the fade-in animation
+    // Smooth fade-in
     setTimeout(() => {
-        overlay.style.opacity = 1; // Smooth fade-in for overlay
-        questionSection.style.transform = "translate(-50%, -50%) scale(1)"; // Zoom effect
-        questionSection.style.opacity = 1; // Fade-in for question box
-    }, 50); // Small delay to ensure CSS transition applies
+        overlay.style.opacity = 1;
+        questionSection.style.transform = "translate(-50%, -50%) scale(1)";
+        questionSection.style.opacity = 1;
+    }, 50);
 
-    // Display the question and options
     document.getElementById("question").innerText = question.question;
-
-    // Clear previous options
-    let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = '';
 
-    // Display options
     question.options.forEach((option, i) => {
         let button = document.createElement("button");
         button.innerText = option;
         button.style.fontFamily = "Comfortaa";
 
         button.onclick = function () {
-            // Disable the clicked option immediately
-            button.disabled = true;
+            if (attemptsLeft <= 0 || answeredCorrectly) return;
+
+            attemptsLeft--;
 
             if (i === question.correct) {
-                // Change the color of the correct answer to green
+                answeredCorrectly = true;
+
                 button.style.backgroundColor = "#88E788";
                 button.style.color = "black";
-                button.style.fontFamily = "Comfortaa";
 
-                // Disable wrong options with fade-out
                 Array.from(optionsDiv.children).forEach(child => {
-                    if (child !== button) {
-                        child.disabled = true; // Disable wrong options
-                        child.style.display = "none"; // Optionally hide wrong options
-                    }
+                    child.disabled = true;
+                    if (child !== button) child.style.display = "none";
                 });
 
-                document.getElementById("explanation").innerText = question.explanation;
-                document.getElementById("explanation").style.display = "block";
+                explanationBox.innerHTML = `
+                    <strong>✅ Great job! You're making a difference for the planet! 🌍💚</strong><br><br>
+                    ${question.explanation}
+                `;
+                explanationBox.style.display = "block";
+                closeBtn.style.display = "block";
 
-                setTimeout(() => {
-                    overlay.style.opacity = 0; // Smooth fade-out
-                    questionSection.style.transform = "translate(-50%, -50%) scale(0.8)"; // Zoom out effect
-                    questionSection.style.opacity = 0; // Fade-out for question box
-
-                    // Hide elements after transition
-                    setTimeout(() => {
-                        overlay.style.display = "none";
-                        questionSection.style.display = "none";
-                        document.getElementById("explanation").style.display = "none"; // Hide explanation
-                    }, 500); // Time after which elements are hidden
-                }, 3000);
             } else {
-                // Mark the wrong answer
                 button.style.backgroundColor = "red";
                 button.style.color = "white";
+                button.disabled = true;
+
+                if (attemptsLeft === 0) {
+                    Array.from(optionsDiv.children).forEach(child => {
+                        child.disabled = true;
+                        if (child !== optionsDiv.children[question.correct]) {
+                            child.style.display = "none";
+                        } else {
+                            child.style.backgroundColor = "#88E788";
+                            child.style.color = "black";
+                        }
+                    });
+
+                    explanationBox.innerHTML = `
+                        <strong>❌ You got all attempts wrong 😢</strong><br><br>
+                        ${question.explanation}
+                    `;
+                    explanationBox.style.display = "block";
+                    closeBtn.style.display = "block";
+                }
             }
         };
+
         optionsDiv.appendChild(button);
     });
 }
+
+
+// ✅ Close button functionality (keep this outside showQuestion)
+document.getElementById("close-btn").onclick = function () {
+    const overlay = document.getElementById("overlay");
+    const questionSection = document.getElementById("question-section");
+
+    overlay.style.opacity = 0;
+    questionSection.style.transform = "translate(-50%, -50%) scale(0.8)";
+    questionSection.style.opacity = 0;
+
+    setTimeout(() => {
+        overlay.style.display = "none";
+        questionSection.style.display = "none";
+        document.getElementById("explanation").style.display = "none";
+
+        // ✅ Hide the close button again
+        document.getElementById("close-btn").style.display = "none";
+    }, 500);
+};

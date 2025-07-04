@@ -100,204 +100,141 @@ function showCompletionScreen(selectedFolder) {
 // Function to calculate the star rating based on turns
 function getStarRating(turns) {
     if (turns <= 20) {
-        return "⭐⭐⭐⭐⭐"; 
+        return "⭐⭐⭐⭐⭐";
     } else if (turns <= 25) {
-        return "⭐⭐⭐⭐"; 
+        return "⭐⭐⭐⭐";
     } else if (turns <= 30) {
-        return "⭐⭐⭐"; 
+        return "⭐⭐⭐";
     } else if (turns <= 35) {
-        return "⭐⭐"; 
+        return "⭐⭐";
     } else {
-        return "⭐"; 
+        return "⭐";
     }
 }
 
 var questions = [
     {
-        question: "What is causing the polar bear’s ice to shrink?",
-        options: ["Climate change", "Weight of polar bear", "Rains", "Using ice slides"],
-        correct: 0,
-        explanation: "The ice is melting because of climate change."
-    },
-    
-    {
-        question: "Why do polar bears need sea ice to live?",
-        options: ["For playing games", "To hunt seals and travel", "For camping", "To keep their fur clean"],
-        correct: 1,
-        explanation: "Ice acts as a hunting ground for polar bears to hunt seals and also to travel."
-    },
-
-    {
-        question: "What happens to polar bears when the sea ice melts too quickly?",
-        options: ["Their population grows", "Finding food will be difficult for them", "Their eyes become green", "They become happy"],
-        correct: 1,
-        explanation: "They have to swim long distances and find it harder to find food."
-    },
-
-    {
-        question: "What is one main reason for the ice caps melting?",
-        options: ["Cold drinks", "Global warming", "Too much snow", "Weight of polar bears"],
-        correct: 1,
-        explanation: "The Earth is getting warmer because of too many greenhouse gases."
-    },
-
-    {
-        question: "What can we do to help stop the ice from melting?",
-        options: ["Reduce global warming", "Do not touch the ice", "Nothing", "Be optimistic"],
-        correct: 0,
-        explanation: "Reducing global warming stops the ice from melting."
-    },
-
-    {
-        question: "Why are scientists concerned about the melting ice caps?",
-        options: ["Because they want to find new continents", "Because of climate change and animals living there", "Because of not finding coffee there", "As doing research becomes difficult"],
-        correct: 1,
-        explanation: "It affects animals like polar bears and changes the climate."
-    },
-
-    {
-        question: "What happens to polar bear food sources when ice melts?",
-        options: ["Get doubled", "Become scarce", "They will not get affected", "Become enriched"],
-        correct: 1,
-        explanation: "Seals find it harder to live and the bears have less food."
-    },
-
-    {
-        question: "What are greenhouse gases and how do they affect the climate?",
-        options: ["They are gases that keep the planet warm, like a blanket", "They are gases that help the ice stay cold", "They are gases that make the air smell nice", "They are gases that help polar bears find food"],
-        correct: 0,
-        explanation: "They are gases that keep the planet warm, like a blanket."
-    },
-
-    {
-        question: "What is one simple thing you can do at home to help fight climate change?",
-        options: ["Turn off lights when you're not using them", "Leave the fridge door open to cool the house", "Use more plastic bags", "Drive a car with more emissions"],
-        correct: 0,
-        explanation: "Reducing the consumption of electricity will help in fighting against climate change."
-    },
-
-    {
-        question: "Why is it important to learn about climate change and the polar bear’s situation?",
-        options: ["To understand how our actions affect the planet and to find ways to help", "To see more polar bears on TV", "To find out how to play with polar bears", "To learn how to make ice sculptures"],
-        correct: 0,
-        explanation: "Understanding our impact can lead to effective solutions."
-    },
-
-    {
-        question: "What is a significant consequence of climate change on polar bears' habitats?",
-        options: ["Increase in polar bear population", "More icebergs", "Loss of breeding grounds due to melting ice", "Polar bears becoming more friendly"],
+        question: "Why do rising sea levels threaten coastal communities?",
+        options: ["They cause more ship traffic", "They improve marine life habitats", "They lead to flooding and erosion", "They raise fishing yields"],
         correct: 2,
-        explanation: "As the ice melts, polar bears lose crucial areas where they breed and care for their young, threatening their survival."
+        explanation: "Higher sea levels can flood coastal areas and erode shorelines."
     },
-
     {
-        question: "How does melting ice affect sea levels?",
-        options: ["Sea levels rise due to melting ice", "Sea levels decrease due to melting ice", "Sea levels remain the same", "Sea levels rise only in winter"],
-        correct: 0,
-        explanation: "When ice caps and glaciers melt, they contribute to higher sea levels, which can lead to coastal flooding and erosion."
+        question: "How does planting trees help combat climate change?",
+        options: ["Trees increase soil erosion", "Trees absorb carbon dioxide", "Trees reflect sunlight", "Trees release CFCs"],
+        correct: 1,
+        explanation: "Trees take in CO₂, reducing greenhouse gas levels."
     },
-
     {
-        question: "What role do polar bears play in the Arctic ecosystem?",
-        options: ["They are the top predators, helping maintain balance in the food chain", "They are the primary producers in the ecosystem", "They have no impact on the ecosystem", "They only affect the land animals"],
-        correct: 0,
-        explanation: "As apex predators, polar bears help regulate the populations of their prey, like seals, which is vital for the health of the Arctic ecosystem."
-    },
-
-    {
-        question: "What is the main cause of global climate change?",
-        options: ["Burning fossil fuels", "Deforestation", "Volcanic eruptions", "Natural solar cycles"],
-        correct: 0,
-        explanation: "Burning fossil fuels releases large amounts of carbon dioxide, the main driver of climate change."
-    },
-    
-    {
-        question: "Which gas is most responsible for trapping heat in the Earth's atmosphere?",
-        options: ["Oxygen", "Nitrogen", "Carbon dioxide", "Helium"],
+        question: "What is renewable energy?",
+        options: ["Energy from nonrenewable sources", "Energy only usable once", "Energy from sources that replenish naturally", "Energy that uses coal"],
         correct: 2,
-        explanation: "Carbon dioxide is the primary greenhouse gas emitted through human activities."
+        explanation: "Renewables like wind, solar, and hydro replenish naturally."
     },
-    
     {
-        question: "What percentage of the Earth's atmosphere is carbon dioxide?",
-        options: ["0.04%", "1%", "5%", "10%"],
+        question: "Which activity emits the least greenhouse gases?",
+        options: ["Flying in a plane", "Cooking with gas", "Driving a car", "Riding a bicycle"],
+        correct: 3,
+        explanation: "Bicycles don’t burn fossil fuels, emitting almost no GHGs."
+    },
+    {
+        question: "What does 'carbon offsetting' mean?",
+        options: ["Balancing emissions by funding reductions elsewhere", "Measuring carbon footprints only", "Banning CO₂ emissions", "Releasing more carbon"],
         correct: 0,
-        explanation: "Carbon dioxide makes up about 0.04% of the atmosphere, but even this small amount has a major impact."
-    },
-    
-    {
-        question: "Which sector is the largest emitter of greenhouse gases globally?",
-        options: ["Transportation", "Agriculture", "Energy", "Waste management"],
-        correct: 2,
-        explanation: "The energy sector, particularly electricity and heat production, is the largest source of greenhouse gas emissions."
+        explanation: "Offsets compensate emissions by supporting reductions elsewhere."
     },
     {
-        question: "What is the predicted rise in global temperature by 2100 if significant measures aren't taken?",
-        options: ["1°C", "2-4°C", "4-6°C", "6-8°C"],
-        correct: 1,
-        explanation: "If no substantial action is taken, global temperatures are expected to rise between 2°C to 4°C by 2100."
-    },
-    {
-        question: "Which of the following is NOT a consequence of climate change?",
-        options: ["Rising sea levels", "Increased frequency of hurricanes", "Expansion of polar ice caps", "More intense heatwaves"],
-        correct: 2,
-        explanation: "Climate change is causing the polar ice caps to shrink, not expand."
-    },
-    {
-        question: "What is ocean acidification?",
-        options: ["The ocean becoming warmer", "Increase in ocean salinity", "The ocean absorbing CO2 and becoming more acidic", "The depletion of ocean oxygen levels"],
-        correct: 2,
-        explanation: "Ocean acidification occurs when CO2 is absorbed by seawater, making it more acidic and affecting marine life."
-    },
-    {
-        question: "Which of the following countries emits the most carbon dioxide per capita?",
-        options: ["China", "United States", "India", "Russia"],
-        correct: 1,
-        explanation: "The United States has one of the highest carbon emissions per capita, even though China emits the most in total."
-    },
-    {
-        question: "What is the purpose of the Paris Agreement?",
-        options: ["To limit global warming to below 2°C", "To eliminate all fossil fuel use", "To ban deforestation globally", "To provide climate refugees with resources"],
+        question: "Why is methane considered a powerful greenhouse gas?",
+        options: ["It traps more heat per molecule than CO₂", "It cools the planet", "It evaporates quickly", "It is lighter than air"],
         correct: 0,
-        explanation: "The Paris Agreement aims to limit global temperature rise to well below 2°C, with efforts to keep it to 1.5°C."
+        explanation: "Methane traps significantly more heat than CO₂ molecule for molecule."
     },
     {
-        question: "Which of these renewable energy sources is the most used worldwide?",
-        options: ["Solar power", "Hydropower", "Wind power", "Geothermal energy"],
+        question: "What is a climate tipping point?",
+        options: ["A new type of renewable energy", "A threshold leading to irreversible changes", "A climate agreement goal", "A safe level of emissions"],
         correct: 1,
-        explanation: "Hydropower is currently the largest source of renewable energy used worldwide."
+        explanation: "Tipping points are thresholds beyond which damage can’t be reversed."
     },
     {
-        question: "What is the main reason for the shrinking of the Arctic ice cap?",
-        options: ["Overfishing", "Melting due to rising temperatures", "Oil spills", "Changes in ocean currents"],
+        question: "Why do heatwaves increase under climate change?",
+        options: ["Because of less sunshine", "Because of higher greenhouse gas concentrations", "Because wind speeds increase", "Because of more clouds"],
         correct: 1,
-        explanation: "The Arctic ice cap is shrinking primarily due to rising global temperatures caused by climate change."
+        explanation: "More GHGs trap heat, raising temperatures and heatwave frequency."
     },
     {
-        question: "How does deforestation contribute to climate change?",
-        options: ["It cools the planet by increasing albedo", "It increases carbon dioxide levels in the atmosphere", "It improves air quality", "It has no impact on climate change"],
+        question: "What effect does ice melt in Greenland have on oceans?",
+        options: ["Raises sea level", "Increases ocean temperature only", "Makes oceans saltier", "Lowers sea level"],
+        correct: 0,
+        explanation: "Melting ice adds fresh water to oceans, raising sea levels."
+    },
+    {
+        question: "How does climate change affect agriculture?",
+        options: ["Causes unpredictable weather and reduced yields", "Eliminates pests", "Prevents droughts", "Enhances crop yields everywhere"],
+        correct: 0,
+        explanation: "Changing patterns can reduce yields and cause more droughts or floods."
+    },
+    {
+        question: "What is the greenhouse effect?",
+        options: ["Cooling by reflection", "Trapping of heat by atmospheric gases", "Absorption of sound waves", "UV radiation heating the Earth"],
         correct: 1,
-        explanation: "Deforestation releases stored carbon dioxide, contributing to higher atmospheric CO2 levels."
+        explanation: "Certain gases trap outgoing heat, warming the planet."
     },
     {
-        question: "Which of the following is a potential solution to climate change?",
-        options: ["Using more coal", "Building sea walls", "Reducing greenhouse gas emissions", "Ignoring the problem"],
+        question: "Why is reducing fossil fuel use important?",
+        options: ["They absorb methane", "They cool the climate", "Fossil fuels are unlimited", "They produce CO₂ when burned"],
+        correct: 3,
+        explanation: "Burning fossil fuels releases CO₂, a major GHG."
+    },
+    {
+        question: "What role do oceans play in climate regulation?",
+        options: ["They release only methane", "They don’t affect climate", "They decrease rainfall", "They store heat and absorb CO₂"],
+        correct: 3,
+        explanation: "Oceans absorb heat and CO₂, moderating climate change."
+    },
+    {
+        question: "How does using public transport help fight climate change?",
+        options: ["It releases more GHGs", "It cuts individual CO₂ emissions", "It causes traffic jams", "It increases car use"],
+        correct: 1,
+        explanation: "Sharing rides reduces per-person emissions."
+    },
+    {
+        question: "What is climate resilience?",
+        options: ["Technology to cool down cities instantly", "Capacity to resist and recover from climate impacts", "Plan to relocate everyone", "Ability to increase emissions"],
+        correct: 1,
+        explanation: "Resilience is about adapting to and recovering from climate change."
+    },
+    {
+        question: "Which gas is released by cutting down forests?",
+        options: ["Carbon dioxide", "Oxygen", "Argon", "Nitrogen"],
+        correct: 0,
+        explanation: "Deforestation releases CO₂ stored in trees."
+    },
+    {
+        question: "Why are coral reefs affected by climate change?",
+        options: ["Ocean cooling", "Less sunlight", "More fish growth", "Ocean warming and acidification"],
+        correct: 3,
+        explanation: "Warmer, more acidic oceans stress reefs, causing bleaching."
+    },
+    {
+        question: "What is 'carbon sequestration'?",
+        options: ["Reducing oxygen production", "Releasing CO₂ into the atmosphere", "Storing CO₂ in trees, soil, or underground", "Measuring carbon in emissions"],
         correct: 2,
-        explanation: "Reducing greenhouse gas emissions is the most effective way to mitigate climate change."
+        explanation: "Sequestration stores CO₂ to reduce atmospheric concentrations."
     },
     {
-        question: "What is a carbon footprint?",
-        options: ["A person's impact on local wildlife", "A measure of how much carbon a person or activity emits", "The carbon content of the air", "The footprint of carbon atoms in soil"],
-        correct: 1,
-        explanation: "A carbon footprint measures the total greenhouse gas emissions caused by an individual, organization, or activity."
+        question: "How does switching to LED lighting help climate?",
+        options: ["LEDs emit CO₂ directly", "LEDs are less efficient", "LEDs use more energy", "LEDs use less electricity"],
+        correct: 3,
+        explanation: "LED bulbs consume about 75% less energy than incandescent bulbs."
     },
     {
-        question: "What is the term for efforts to reduce or prevent the emission of greenhouse gases?",
-        options: ["Adaptation", "Mitigation", "Resilience", "Restoration"],
-        correct: 1,
-        explanation: "Mitigation refers to actions taken to reduce or prevent the emission of greenhouse gases."
+        question: "What international goal aims to limit warming to 1.5–2°C?",
+        options: ["Montreal Protocol", "Kyoto Protocol", "Doha Amendment", "Paris Agreement"],
+        correct: 3,
+        explanation: "The Paris Agreement sets that global warming target."
     }
 ];
+
 
 function getRandomImageFolder() {
     const folders = ["images", "images2", "images3", "images4", "images5", "images6"];
@@ -333,7 +270,7 @@ function stopTimer() {
     clearInterval(timerInterval);
 }
 
-window.onload = function() {
+window.onload = function () {
     selectedFolder = getRandomImageFolder();
 
     for (let r = 0; r < rows; r++) {
@@ -368,7 +305,7 @@ window.onload = function() {
     for (let i = 0; i < pieces.length; i++) {
         let tile = document.createElement("img");
         tile.src = `./${selectedFolder}/${pieces[i]}.jpg`;  // Use selected folder here
-        
+
 
         tile.dataset.pieceNumber = pieces[i];
 
@@ -408,7 +345,7 @@ function dragEnter(e) {
     e.preventDefault();
 }
 
-function dragLeave() {}
+function dragLeave() { }
 
 function dragDrop() {
     otherTile = this;
@@ -417,6 +354,7 @@ function dragDrop() {
 // Preload the placement sound
 const placementSound = new Audio('./src_assets_puzzle.wav');
 
+// Update the dragEnd function to check for game completion
 function dragEnd() {
     if (currTile.src.includes("blank")) {
         return;
@@ -436,8 +374,8 @@ function dragEnd() {
         correctPositions[index] = true;
 
         // Lock the current tile to prevent further moves
-        currTile.dataset.locked = "true"; // Lock the tile
-        otherTile.dataset.locked = "true"; // Lock the other tile
+        currTile.dataset.locked = "true";
+        otherTile.dataset.locked = "true";
 
         // Play the placement sound
         placementSound.play();
@@ -445,45 +383,63 @@ function dragEnd() {
         turns += 1;
         document.getElementById("turns").innerText = turns;
 
-        // Show a random question and disable the board
-        let pieceIndex = getRandomQuestionIndex(); // Get a random question index
-        showQuestion(pieceIndex);
+        // ✅ Disable all tiles
+        const tiles = document.querySelectorAll("#board img, #pieces img");
+        tiles.forEach(tile => tile.style.pointerEvents = "none");
+
+        // ✅ Show a random question after 1.5 sec delay
+        let pieceIndex = getRandomQuestionIndex();
+        setTimeout(() => {
+            showQuestion(pieceIndex);
+
+            // ✅ Re-enable all tiles
+            tiles.forEach(tile => tile.style.pointerEvents = "auto");
+        }, 1500);
     } else {
         // Move back to the pieces pile if incorrect
         turns += 1;
         document.getElementById("turns").innerText = turns;
-        
+
         // Reset the currTile image using the selectedFolder
-        currTile.src = `./${selectedFolder}/${currTile.dataset.pieceNumber}.jpg`; // Ensure the original folder is used
+        currTile.src = `./${selectedFolder}/${currTile.dataset.pieceNumber}.jpg`;
     }
 
-    // Check if the game is complete after every move
     // Check if the game is complete after every move
     if (checkCompletion() && !isGameComplete) {
         stopTimer();
         isGameComplete = true;
         showCompletionScreen(selectedFolder);
 
-        // Show redirect countdown
-        const countdownMsg = document.createElement("div");
-        countdownMsg.innerHTML = `
-        <p style="color:white; font-family:Comfortaa; margin-top:40px; font-size:18px;" id="redirect-msg">
-            Redirecting to credits page in <span id="countdown">10</span> seconds...
-        </p>`;
-        document.getElementById("board").appendChild(countdownMsg);
+        const creditsButton = document.createElement("button");
+        creditsButton.innerText = "Go to Credits";
 
-        // Countdown logic
-        let countdown = 25;
-        const countdownInterval = setInterval(() => {
-            countdown--;
-            document.getElementById("countdown").innerText = countdown;
-            if (countdown === 0) clearInterval(countdownInterval);
-        }, 1000);
+        // Button Styling
+        creditsButton.style.display = "block";
+        creditsButton.style.margin = "60px auto 40px auto";
+        creditsButton.style.padding = "12px 24px";
+        creditsButton.style.fontSize = "18px";
+        creditsButton.style.fontFamily = "Comfortaa";
+        creditsButton.style.backgroundColor = "#FFD700";
+        creditsButton.style.border = "none";
+        creditsButton.style.borderRadius = "12px";
+        creditsButton.style.cursor = "pointer";
+        creditsButton.style.transition = "all 0.3s ease";
 
-        // Redirect to credits.html after 10 seconds
-        setTimeout(() => {
+        // Hover Effects
+        creditsButton.onmouseover = function () {
+            creditsButton.style.backgroundColor = "#FFC107";
+            creditsButton.style.transform = "scale(1.05)";
+        };
+        creditsButton.onmouseout = function () {
+            creditsButton.style.backgroundColor = "#FFD700";
+            creditsButton.style.transform = "scale(1)";
+        };
+
+        creditsButton.onclick = () => {
             window.location.href = "../../../Credits.html";
-        }, 25000);
+        };
+
+        document.getElementById("board").appendChild(creditsButton);
     }
 }
 
@@ -492,7 +448,7 @@ function isCorrectPosition(tile, draggedTile) {
     let draggedPosition = parseInt(draggedTile.dataset.pieceNumber) - 1; // Get the correct position from data attribute
 
     // Check if the position of the dragged tile matches the expected position
-    return tilePosition === draggedPosition; 
+    return tilePosition === draggedPosition;
 }
 
 function isCorrectPosition(tile, draggedTile) {
@@ -500,79 +456,109 @@ function isCorrectPosition(tile, draggedTile) {
     let draggedPosition = parseInt(draggedTile.dataset.pieceNumber) - 1; // Get the correct position from data attribute
 
     // Check if the position of the dragged tile matches the expected position
-    return tilePosition === draggedPosition; 
+    return tilePosition === draggedPosition;
 }
 
 
 function showQuestion(index) {
     let question = questions[index];
+    let attemptsLeft = 3;
+    let answeredCorrectly = false;
 
-    // Fade in the overlay and show the question section
-    let overlay = document.getElementById("overlay");
-    let questionSection = document.getElementById("question-section");
+    const overlay = document.getElementById("overlay");
+    const questionSection = document.getElementById("question-section");
+    const closeBtn = document.getElementById("close-btn");
+    const explanationBox = document.getElementById("explanation");
+    const optionsDiv = document.getElementById("options");
 
-    overlay.style.display = "block"; // Make it visible
-    questionSection.style.display = "block"; // Make question box visible
+    overlay.style.display = "block";
+    questionSection.style.display = "block";
+    closeBtn.style.display = "none";
+    explanationBox.style.display = "none";
 
-    // Trigger the fade-in animation
+    // Smooth fade-in
     setTimeout(() => {
-        overlay.style.opacity = 1; // Smooth fade-in for overlay
-        questionSection.style.transform = "translate(-50%, -50%) scale(1)"; // Zoom effect
-        questionSection.style.opacity = 1; // Fade-in for question box
-    }, 50); // Small delay to ensure CSS transition applies
+        overlay.style.opacity = 1;
+        questionSection.style.transform = "translate(-50%, -50%) scale(1)";
+        questionSection.style.opacity = 1;
+    }, 50);
 
-    // Display the question and options
     document.getElementById("question").innerText = question.question;
-
-    // Clear previous options
-    let optionsDiv = document.getElementById("options");
     optionsDiv.innerHTML = '';
 
-    // Display options
     question.options.forEach((option, i) => {
         let button = document.createElement("button");
         button.innerText = option;
         button.style.fontFamily = "Comfortaa";
 
-        button.onclick = function() {
-            // Disable the clicked option immediately
-            button.disabled = true;
+        button.onclick = function () {
+            if (attemptsLeft <= 0 || answeredCorrectly) return;
+
+            attemptsLeft--;
 
             if (i === question.correct) {
-                // Change the color of the correct answer to green
+                answeredCorrectly = true;
+
                 button.style.backgroundColor = "#88E788";
                 button.style.color = "black";
-                button.style.fontFamily = "Comfortaa";
 
-                // Disable wrong options with fade-out
                 Array.from(optionsDiv.children).forEach(child => {
-                    if (child !== button) {
-                        child.disabled = true; // Disable wrong options
-                        child.style.display = "none"; // Optionally hide wrong options
-                    }
+                    child.disabled = true;
+                    if (child !== button) child.style.display = "none";
                 });
 
-                document.getElementById("explanation").innerText = question.explanation;
-                document.getElementById("explanation").style.display = "block";
+                explanationBox.innerHTML = `
+                    <strong>✅ Great job! You're making a difference for the planet! 🌍💚</strong><br><br>
+                    ${question.explanation}
+                `;
+                explanationBox.style.display = "block";
+                closeBtn.style.display = "block";
 
-                setTimeout(() => {
-                    overlay.style.opacity = 0; // Smooth fade-out
-                    questionSection.style.transform = "translate(-50%, -50%) scale(0.8)"; // Zoom out effect
-                    questionSection.style.opacity = 0; // Fade-out for question box
-
-                    // Hide elements after transition
-                    setTimeout(() => {
-                        overlay.style.display = "none";
-                        questionSection.style.display = "none";
-                        document.getElementById("explanation").style.display = "none"; // Hide explanation
-                    }, 500); // Time after which elements are hidden
-                }, 3000);
             } else {
-                // Mark the wrong answer
                 button.style.backgroundColor = "red";
                 button.style.color = "white";
+                button.disabled = true;
+
+                if (attemptsLeft === 0) {
+                    Array.from(optionsDiv.children).forEach(child => {
+                        child.disabled = true;
+                        if (child !== optionsDiv.children[question.correct]) {
+                            child.style.display = "none";
+                        } else {
+                            child.style.backgroundColor = "#88E788";
+                            child.style.color = "black";
+                        }
+                    });
+
+                    explanationBox.innerHTML = `
+                        <strong>❌ You got all attempts wrong 😢</strong><br><br>
+                        ${question.explanation}
+                    `;
+                    explanationBox.style.display = "block";
+                    closeBtn.style.display = "block";
+                }
             }
         };
+
         optionsDiv.appendChild(button);
     });
 }
+
+// ✅ Close button functionality (keep this outside showQuestion)
+document.getElementById("close-btn").onclick = function () {
+    const overlay = document.getElementById("overlay");
+    const questionSection = document.getElementById("question-section");
+
+    overlay.style.opacity = 0;
+    questionSection.style.transform = "translate(-50%, -50%) scale(0.8)";
+    questionSection.style.opacity = 0;
+
+    setTimeout(() => {
+        overlay.style.display = "none";
+        questionSection.style.display = "none";
+        document.getElementById("explanation").style.display = "none";
+
+        // ✅ Hide the close button again
+        document.getElementById("close-btn").style.display = "none";
+    }, 500);
+};

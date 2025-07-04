@@ -59,28 +59,28 @@
         }();
 
         // Prevent opening the console using keyboard shortcuts
-        document.addEventListener("keydown", function(e) {
+        document.addEventListener("keydown", function (e) {
             if (e.key === "F12" || (e.ctrlKey && (e.key === "u" || e.key === "s" || e.key === "i" || e.key === "c"))) {
                 e.preventDefault();
             }
         });
 
         // Disable right-click context menu
-        document.addEventListener("contextmenu", function(e) {
+        document.addEventListener("contextmenu", function (e) {
             e.preventDefault();
         });
 
         // Disable copy and paste
-        document.addEventListener("copy", function(e) {
+        document.addEventListener("copy", function (e) {
             e.preventDefault();
         });
 
-        document.addEventListener("paste", function(e) {
+        document.addEventListener("paste", function (e) {
             e.preventDefault();
         });
 
         // Disable text selection
-        document.addEventListener("selectstart", function(e) {
+        document.addEventListener("selectstart", function (e) {
             e.preventDefault();
         });
 
@@ -142,8 +142,11 @@
     <!-- Overlay to disable interaction with the board -->
     <div id="overlay" style="display: none;"></div>
 
-    <!-- Question Section with a background box -->
-    <div id="question-section" class="question-box" style="display: none;">
+    <!-- Question Section with a background box and Close Button -->
+    <div id="question-section" class="question-box"
+        style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); opacity: 0; transition: all 0.5s ease; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 1000;">
+        <button id="close-btn"
+            style="position: absolute; top: 10px; right: 15px; background: transparent; border: none; font-size: 24px; cursor: pointer; color: #333; font-weight: bold; z-index: 1001;">&times;</button>
         <h3 id="question"></h3>
         <div id="options"></div>
         <p id="explanation" style="display: none;"></p>

@@ -182,3 +182,63 @@ h2 {
     font-family: 'Comfortaa', sans-serif;
     z-index: 1000;
 }
+
+/* Close Button Styling */
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+#close-btn:hover {
+    color: #ff3333 !important;
+    transform: rotate(90deg) scale(1.2);
+}
+
+#explanation {
+    margin-top: 24px;
+    font-size: 18px;
+    color: #1a1a1a;
+    background: linear-gradient(135deg, #fffbe6, #fff3cd);
+    border-left: 6px solid #ffca28;
+    padding: 16px 20px;
+    border-radius: 12px;
+    line-height: 1.7;
+    display: none;
+    animation: fadeInPop 0.4s ease forwards;
+    font-family: 'Comfortaa', sans-serif;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+@keyframes fadeInPop {
+    0% {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+#explanation::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: -10px;
+    width: 8px;
+    height: 8px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffc107aa, 0 0 20px #ffc10788;
+}
