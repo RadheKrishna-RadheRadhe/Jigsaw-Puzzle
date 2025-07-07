@@ -4,102 +4,67 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Team Credits</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <style>
-        body {
-            background: #0f0f0f;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        .animate-bounce-slow {
-            animation: bounce 1.5s infinite;
-        }
-    </style>
+    <title>Credits Page</title>
+    <link rel="stylesheet" href="credits.css" />
 </head>
 
-<body class="text-white overflow-x-hidden">
+<body>
+    <div class="container">
+        <h1 class="main-title">Credits Page</h1>
 
-    <section class="min-h-screen flex flex-col items-center justify-center py-16">
-        <h1 class="text-4xl sm:text-5xl font-bold mb-4 text-center" data-aos="fade-down">
-            Meet Our Amazing Team
-        </h1>
-
-        <!-- Scroll Notification -->
-        <div class="text-center mb-12" data-aos="fade-up" data-aos-delay="200">
-            <p class="text-gray-400 text-sm sm:text-base">
-                Scroll down to view more
-            </p>
-            <div class="text-2xl mt-1 text-pink-400 animate-bounce-slow">⬇</div>
-        </div>
-
-        <div class="flex flex-col gap-y-24 px-6 max-w-2xl w-full">
-            <!-- Team Member 1 -->
-            <div class="glass-card p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="text-2xl font-semibold mb-2 text-[#00FFC6]">Gokulnath N</h2>
-                <p class="text-gray-300">Developer</p>
+        <div class="top-tiles">
+            <div class="tile">
+                <h2>Guided By</h2>
+                <h4>Jayaram B</h4>
+                <p>SCOPE Department</p>
+                <p>VIT Chennai</p>
             </div>
-
-            <!-- Team Member 2 -->
-            <div class="glass-card p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                <h2 class="text-2xl font-semibold mb-2 text-[#FF61F6]">Shailendra Kumar C S</h2>
-                <p class="text-gray-300">Developer / UI/UX Designer</p>
+            <div class="tile">
+                <h2>CSIR Team</h2>
             </div>
-
-            <!-- Team Member 3 -->
-            <div class="glass-card p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
-                <h2 class="text-2xl font-semibold mb-2 text-[#F9FF61]">Vijay</h2>
-                <p class="text-gray-300">Developer</p>
-            </div>
-
-            <!-- Team Member 4 -->
-            <div class="glass-card p-6 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
-                <h2 class="text-2xl font-semibold mb-2 text-[#61F6FF]">Bhadri Raj</h2>
-                <p class="text-gray-300">Developer</p>
+            <div class="tile logo-tile">
+                <img src="vit_light.png" alt="VIT Logo">
             </div>
         </div>
-    </section>
 
-    <!-- Go Back Button -->
-    <div class="text-center mb-12" data-aos="fade-up">
-        <a href="welcome.html">
-            <button
-                class="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition transform duration-300">
-                ⬅ Go Back
-            </button>
-        </a>
+        <h2 class="section-title">Developers</h2>
+        <div class="developers-grid">
+            <div class="dev-card">
+                <h3>Shailendra Kumar C S</h3>
+                <p>Role: Developer, UI Designer</p>
+                <p>College: VIT Chennai</p>
+                <p>Program: Integrated M.Tech Computer Science Engineering (5 years)</p>
+                <p>Year: 3rd Year</p>
+                <p>Reg Number: 23MIA1139</p>
+            </div>
+            <div class="dev-card">
+                <h3>Bhadri Raj T</h3>
+                <p>Role: Developer, Testing</p>
+                <p>College: VIT Chennai</p>
+                <p>Program: Integrated M.Tech Computer Science Engineering (5 years)</p>
+                <p>Year: 3rd Year</p>
+                <p>Reg Number: 23MIA1029</p>
+            </div>
+            <div class="dev-card">
+                <h3>Gokulnath N</h3>
+                <p>Role: Developer</p>
+                <p>College: VIT Chennai</p>
+                <p>Program: B.Tech Electrical and Electronics Engineering</p>
+                <p>Year: 4th Year</p>
+                <p>Reg Number: 22BEE1113</p>
+            </div>
+            <div class="dev-card">
+                <h3>PS Vijay</h3>
+                <p>Role: Developer</p>
+                <p>College: VIT Chennai</p>
+                <p>Program: Integrated M.Tech Software Engineering (5 years)</p>
+                <p>Year: 4th Year</p>
+                <p>Reg Number: 22MIS1011</p>
+            </div>
+        </div>
+
+        <a href="welcome.html" class="back-button">← Go Back</a>
     </div>
-
-    <footer class="text-center py-6 text-gray-500 text-sm" data-aos="fade-up">
-        © 2025 Jigsaw Puzzle. All rights reserved.
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 1000,
-            once: true
-        });
-    </script>
 </body>
 
 </html>
