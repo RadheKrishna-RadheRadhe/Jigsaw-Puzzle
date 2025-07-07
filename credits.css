@@ -61,14 +61,20 @@ body {
 }
 
 .logo-tile img {
-    max-width: 350px;
-    width: 100%;
+    max-width: 500px;
+    width: 110%;
     height: auto;
     filter: brightness(0.9);
     margin: 0 auto;
+    padding-top: 30px;
+    padding-right: 35px;
+    margin-top: auto;
+    margin-bottom: auto;
     margin-right: auto;
     margin-left: auto;
     display: block;
+    justify-content: center;
+    align-items: center;
     transition: transform 0.3s ease;
 }
 
