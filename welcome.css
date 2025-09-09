@@ -42,7 +42,7 @@ body, html {
     width: 230px;
     height: 100px;
     cursor: pointer;
-    margin: 10px; /* Adjust margin for spacing between buttons */
+    margin-top: 70px; /* Adjust margin for spacing between buttons */
     display: block;
     z-index: 2; /* Ensure the buttons are in front */
 }
